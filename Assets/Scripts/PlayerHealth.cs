@@ -12,9 +12,9 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") && GetComponent<PlayerMovement>().isGrounded)
+        if (collision.gameObject.CompareTag("Enemy") && GetComponent<PlayerMovement>().isGrounded) //Si lo que choca con el jugador es un enemigo y el player está en el suelo...
         {
-            SubstractHealth();            
+            SubstractHealth(); //Se resta una vida al jugador
         }
     }
 
@@ -35,18 +35,18 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    IEnumerator Cooldown() //Corrutina
+    {
+        yield return new WaitForSeconds(.5f);
+        hasCooldown = false;
+        StopCoroutine(Cooldown());
+    }
+
     void EmptyHearts()
     {
         if (hearts < heartsImages.Length)
         {
             heartsImages[hearts].gameObject.SetActive(false);
         }        
-    }
-
-    IEnumerator Cooldown()
-    {
-        yield return new WaitForSeconds(.5f);
-        hasCooldown = false;
-        StopCoroutine(Cooldown());
     }
 }

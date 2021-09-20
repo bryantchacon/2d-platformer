@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Este script va en cada enemigo
+
 public class EnemyMovement : MonoBehaviour
 {
-    Rigidbody2D enemyRb; //Variable para obtener el rigid body del enemigo
+    Rigidbody2D enemyRb; //Variable para obtener el rigid body del enemigo, no importa si no lleva public o private porque el script que guardara esta en el mismo enemigo
     ParticleSystem enemyParticle;
     AudioSource enemyDeadAudio;
     float timeBeforeChange = 0; //Tiempo antes de cambiar, esta variable inicia en 0 para que el movimiento del enemigo empiece desde que inica el juego
@@ -61,6 +63,6 @@ public class EnemyMovement : MonoBehaviour
         enemyParticle.transform.position = transform.position;
         enemyParticle.Play();
         gameObject.SetActive(false); //Desactiva el game object al que esta adjunto este script y se puede volver a utilizar se se activa otra vez
-        //Destroy(gameObject); //Es lo mismo que gameObject.SetAcive(false); pero lo que hace este es borrarlo por completo de la jerarquia
+        //Destroy(gameObject); //Borra al enemigo por completo de la jerarquia
     }
 }

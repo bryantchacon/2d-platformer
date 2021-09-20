@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Este script va en cada portal
+
 public class WinCondition : MonoBehaviour
 {
     public SceneChanger changeScene;
